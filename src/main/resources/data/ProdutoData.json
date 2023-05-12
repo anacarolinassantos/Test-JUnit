@@ -1,0 +1,14 @@
+[
+  {
+    "nome": "Clear",
+    "descricao": "Shampoo anticaspa",
+    "codigoBarra": "7896541232365",
+    "estoque": 30
+  },
+  {
+    "nome": "Dove",
+    "descricao": "Shampoo Dove anticaspa",
+    "codigoBarra": "7896541234568",
+    "estoque": 20
+  }
+]

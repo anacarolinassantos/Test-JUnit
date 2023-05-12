@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: spring-boot-app
+  datasource:
+    url: jdbc:postgresql://localhost:5432/aula_testes
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    open-in-view: false
+    show-sql: true
+server:
+  port: 8080
+  tomcat:
+    connection-timeout: -1
+  servlet:
+    context-path: /api
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.hibernate: ERROR
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${PID} -- [%15.15t] %-40.40logger{39} %X{prefix} %m%n%wEx"
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(--){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(%X{prefix}){magenta} %m%n%wEx"
+  file:
+    name: logs/spring-boot-app.log
+  logback:
+    rollingpolicy:
+      max-history: 30
+      max-file-size: 1GB
+projeto:
+  configuracaoPersonalizada:
+    ambiente: PRODUCAO
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:h2:mem:h2-test-db
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.H2Dialect
+    open-in-view: false
+    show-sql: true
+projeto:
+  configuracaoPersonalizada:
+    ambiente: TEST
